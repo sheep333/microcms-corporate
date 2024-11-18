@@ -1,7 +1,13 @@
 <!-- pages/index.vue -->
 <script setup>
 import { onMounted } from 'vue'
-import { Squirrel, Sprout, Leaf } from 'lucide-vue-next'
+import { Squirrel, Leaf, Sprout } from 'lucide-vue-next'
+// const { getNewsList } = useApi()
+
+// // ニュース一覧を取得
+// const { data: newsData } = await useAsyncData('news', () => 
+//   getNewsList({ limit: 10 })
+// )
 
 // アニメーション用のフラグ
 const isVisible = ref(false)
@@ -16,7 +22,7 @@ onMounted(() => {
 <template>
   <div>
     <!-- ヒーローセクション -->
-    <section class="relative min-h-[70vh] bg-white overflow-hidden">
+    <section class="relative h-screen bg-white overflow-hidden flex items-center">
       <!-- 装飾的な背景要素 -->
       <div class="absolute inset-0 overflow-hidden">
         <div class="absolute top-0 right-0 w-1/2 h-full bg-green-50 transform -skew-x-12 translate-x-20 opacity-60"></div>
@@ -117,6 +123,34 @@ onMounted(() => {
         <div class="absolute bottom-1/3 right-1/4 w-4 h-4 bg-white-50/30 rounded-full animate-particle-delay"></div>
         <div class="absolute top-1/3 left-1/2 w-5 h-5 bg-white-100/40 rounded-full animate-particle-slow"></div>
       </div>
+
+      <Transition
+        enter-from-class="opacity-0"
+        enter-active-class="transition duration-1000 delay-1500"
+        enter-to-class="opacity-100"
+      >
+        <div v-show="isVisible" class="absolute bottom-20 left-1/2 transform -translate-x-1/2">
+          <div class="flex flex-col items-center gap-2">
+            <span class="text-green-200 text-sm tracking-wider font-inter">SCROLL</span>
+            <div class="animate-bounce-gentle">
+              <svg 
+                class="w-6 h-6 text-green-200" 
+                fill="none" 
+                stroke="currentColor" 
+                viewBox="0 0 24 24"
+              >
+                <path 
+                  stroke-linecap="round" 
+                  stroke-linejoin="round" 
+                  stroke-width="2"
+                  d="M19 13l-7 7-7-7m14-8l-7 7-7-7"
+                >
+                </path>
+              </svg>
+            </div>
+          </div>
+        </div>
+      </Transition>
     </section>
 
     <!-- 事業内容 -->
@@ -194,7 +228,7 @@ onMounted(() => {
       <div class="container mx-auto px-4">
         <div class="text-center max-w-3xl mx-auto">
           <span class="font-inter text-green-600 text-sm font-medium tracking-wider">CAREERS</span>
-          <h2 class="text-3xl font-bold mt-4 mb-6 tracking-tight text-gray-900">採用情報</h2>
+          <h2 class="text-3xl font-bold mt-4 tracking-tight text-gray-900">採用情報</h2>
           <p class="text-gray-600 mb-8">私たちと一緒に、新しい価値を創造していきませんか？<br>様々な職種で仲間を募集しています。</p>
           <NuxtLink
             to="/recruit"
@@ -397,5 +431,24 @@ onMounted(() => {
 
 .transition-all {
   transition-property: all;
+}
+
+@keyframes bounce-gentle {
+  0%, 100% {
+    transform: translateY(-15%);
+    animation-timing-function: cubic-bezier(0.8, 0, 1, 1);
+  }
+  50% {
+    transform: translateY(0);
+    animation-timing-function: cubic-bezier(0, 0, 0.2, 1);
+  }
+}
+
+.animate-bounce-gentle {
+  animation: bounce-gentle 2s infinite;
+}
+
+.delay-1500 {
+  transition-delay: 1500ms;
 }
 </style>

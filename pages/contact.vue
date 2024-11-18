@@ -269,7 +269,7 @@ const handleSubmit = async () => {
           <p class="text-gray-600 mb-8">
             お急ぎの方は、お電話でもお問い合わせいただけます。
           </p>
-          <div class="inline-block bg-white rounded-lg shadow-sm px-8 py-6">
+          <div class="inline-block rounded-lg shadow-sm px-8 py-6">
             <p class="text-sm text-gray-600 mb-2">お問い合わせ窓口</p>
             <p class="text-3xl font-bold text-gray-900 mb-2">03-0000-0000</p>
             <p class="text-gray-600">

@@ -29,7 +29,7 @@
     </main>
 
     <!-- フッター -->
-    <footer class="bg-green-800 text-white mt-20">
+    <footer class="bg-green-800 text-white">
       <div class="container mx-auto px-4 py-12">
         <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
           <div>
